@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rails-infrastructure-canary
+  labels:
+    app: rails-infrastructure-canary
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rails-infrastructure-canary
+  template:
+    metadata:
+      labels:
+        app: rails-infrastructure-canary
+    spec:
+      containers:
+      - name: rails-infrastructure-canary
+        image: 056154071827.dkr.ecr.us-east-1.amazonaws.com/rails-infrastructure-canary
+        ports:
+        - containerPort: 80
+          name: http-server

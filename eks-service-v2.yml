@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: rails-infrastructure-canary
+spec:
+  selector:
+    app: railes-infrastructure-canary
+  ports:
+  - port: 8000
+    targetPort: http-server
+  type: LoadBalancer
